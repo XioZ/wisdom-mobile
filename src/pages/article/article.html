@@ -1,0 +1,117 @@
+<!--
+  Generated template for the ArticlePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>WISDOM</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <!-- Ionicons: chat create paperplane send text heart thumbup -->
+  <div class="row no-gutters">
+    <div class="col-9">
+      <div class="media">
+        <!-- TODO: click on author avatar to go to author profile page -->
+        <!-- TODO: change author avatar img url to dynamic path -->
+        <img class="mr-3" src="http://cinemovie.tv/images/stories/Movie%20Pics/Ansel-Elgort-Baby-Driver-interview.jpg" alt="Author Avator">
+        <div class="media-body mt-1 mr-3">
+          <h5 class="mb-0 font-weight-bold" ion-text color="dark">
+            {{ author?.name }}
+          </h5>
+          <h6 class="my-1" ion-text color="dark">
+            {{ author?.description }}
+          </h6>
+          <h6 ion-text color="dark" class="mb-0">
+            {{ article.created | timeAgo }} &middot; {{ article.topic }}
+          </h6>
+          <h6 ion-text color="dark">
+            {{ article.numOfUpvotes }} upvotes &middot; {{ article.numOfRewards }} rewards
+          </h6>
+        </div>
+      </div>
+    </div>
+    <div class="col-3">
+      <button class="mt-0" ion-button block small 
+      [outline]="!isFollowing" (click)="toggleFollowStatus()">
+      {{ isFollowing ? 'Following' : 'Follow' }}
+      </button>
+      <button ion-button block small outline icon-right>
+        <span class="pt-1">Ask</span>
+        <ion-icon name="create"></ion-icon>
+      </button>
+    </div>
+  </div>
+  <!-- TODO: change article picture img url to dynamic path -->
+  <img class="img-fluid my-3" src="https://images.unsplash.com/photo-1465915147858-4a9762d4ff68?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5dd96b113b2b58309989e3820d046095&auto=format&fit=crop&w=750&q=80"
+    alt="Article Picture">
+  <div>
+    <h2 class="font-weight-bold my-1" ion-text>
+      {{ article.title }}
+    </h2>
+    <p ion-text class="mb-0">
+      {{ article.description }}
+    </p>
+    <span>
+      {{ article.content }}
+    </span>
+  </div>
+  <ion-fab bottom right #fab>
+    <button ion-fab mini>
+      <ion-icon name="add"></ion-icon>
+    </button>
+    <ion-fab-list side="top">
+      <button ion-fab icon-only clear
+      *ngIf="savedByUser" 
+      (click)="unsaveArticle(fab)">
+        <i class="fa fa-bookmark"></i>
+      </button>
+      <button ion-fab
+       *ngIf="!savedByUser" 
+       (click)="saveArticle(fab)">
+        <i class="fa fa-bookmark-o"></i>
+      </button>
+      <button ion-fab
+      *ngIf="!upvoted"
+      (click)="giveUpvote(fab)">
+        <i class="fa fa-thumbs-o-up"></i>
+      </button>
+      <button ion-fab
+      *ngIf="upvoted"
+      (click)="giveUpvote(fab)">
+        <i class="fa fa-thumbs-up"></i>
+      </button>
+      <button ion-fab
+      (click)="giveReward(fab)">
+        <i class="fa fa-gift"></i>
+      </button>
+    </ion-fab-list>
+  </ion-fab>
+</ion-content>
+
+<!-- <ion-footer>
+  <div class="row no-gutters align-items-center justify-content-between">
+    <div class="col">
+      <button ion-button icon-only clear
+      *ngIf="savedByUser" (click)="unsaveArticle()">
+        <i class="material-icons">bookmark</i>
+      </button>
+      <button ion-button icon-only clear
+       *ngIf="!savedByUser" (click)="saveArticle()">
+        <i class="material-icons">bookmark_border</i>
+      </button>
+      <button ion-button icon-only clear
+      (click)="giveUpvote()">
+        <i class="material-icons">thumb_up</i>
+      </button>
+    </div>
+    <div class="col" padding-right>
+      <h6 class="text-right" ion-text color="dark">
+        {{ article.numOfUpvotes }} upvotes &middot; {{ article.numOfRewards }} rewards
+      </h6>
+    </div>
+  </div>
+</ion-footer> -->

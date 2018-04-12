@@ -1,0 +1,36 @@
+page-topics {
+    ion-card {
+        position: relative;
+        text-align: center;
+      }
+    
+      .topic-title {
+        position: absolute;
+        bottom: -1%;
+        font-size: 1.0em;
+        width: 100%;
+        padding-left: 16px;
+        text-align: left;
+        font-weight: bold;
+        color: #E0E0E0;
+        background-color: rgba(13, 26, 38, 0.7);
+      }
+
+      .topic-selected {
+          position: absolute;
+          top: 0%;
+          font-size: 3em;
+          width: 100%;
+          height: 100%;
+          padding-top: 10%;
+          font-weight: bolder;
+          color: #E0E0E0;
+          background-color: rgba(13, 26, 38, 0.4);
+      }
+
+      .card-ios {
+          margin: 1px;
+          width: 98%;
+      }
+    
+}
