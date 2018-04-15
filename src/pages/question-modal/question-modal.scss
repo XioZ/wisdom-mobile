@@ -1,0 +1,27 @@
+page-question-modal {
+  div img {
+    vertical-align: middle;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+  }
+
+  hr {
+    color: lightgray;
+    height: 1px;
+  }
+
+  div.author-display {
+    margin-top: 5%;
+  }
+
+  div.qtn-box,
+  div.qtn-title {
+    border: 1px solid lightgray;
+    border-radius: 6px;
+  }
+
+  ion-item.item.item-block {
+    border-radius: 9px;
+  }
+}

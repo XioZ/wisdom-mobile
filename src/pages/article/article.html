@@ -35,57 +35,51 @@
       </div>
     </div>
     <div class="col-3">
-      <button class="mt-0" ion-button block small 
-      [outline]="!isFollowing" (click)="toggleFollowStatus()">
-      {{ isFollowing ? 'Following' : 'Follow' }}
+      <button class="mt-0" ion-button block small [outline]="!isFollowing" (click)="toggleFollowStatus()">
+        {{ isFollowing ? 'Following' : 'Follow' }}
       </button>
-      <button ion-button block small outline icon-right>
+      <button ion-button block small outline icon-right (click)="askQuestion()">
         <span class="pt-1">Ask</span>
         <ion-icon name="create"></ion-icon>
       </button>
     </div>
   </div>
   <!-- TODO: change article picture img url to dynamic path -->
-  <img class="img-fluid my-3" src="https://images.unsplash.com/photo-1465915147858-4a9762d4ff68?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5dd96b113b2b58309989e3820d046095&auto=format&fit=crop&w=750&q=80"
-    alt="Article Picture">
   <div>
-    <h2 class="font-weight-bold my-1" ion-text>
+    <h2 class="font-weight-bold my-2" ion-text>
       {{ article.title }}
     </h2>
-    <p ion-text class="mb-0">
+    <h4 ion-text class="my-2">
       {{ article.description }}
+    </h4>
+    <img class="img-fluid my-3" src="https://images.unsplash.com/photo-1465915147858-4a9762d4ff68?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5dd96b113b2b58309989e3820d046095&auto=format&fit=crop&w=750&q=80"
+      alt="Article Picture">
+    <!-- <p style="white-space: pre;"> -->
+    <p class="my-2" [innerHTML]="article.content">
+      <!-- {{ article.content }} -->
     </p>
-    <span>
-      {{ article.content }}
-    </span>
   </div>
   <ion-fab bottom right #fab>
     <button ion-fab mini>
       <ion-icon name="add"></ion-icon>
     </button>
     <ion-fab-list side="top">
-      <button ion-fab icon-only clear
-      *ngIf="savedByUser" 
-      (click)="unsaveArticle(fab)">
+      <!-- save/unsave -->
+      <button ion-fab icon-only clear *ngIf="savedByUser" (click)="unsaveArticle(fab)">
         <i class="fa fa-bookmark"></i>
       </button>
-      <button ion-fab
-       *ngIf="!savedByUser" 
-       (click)="saveArticle(fab)">
+      <button ion-fab *ngIf="!savedByUser" (click)="saveArticle(fab)">
         <i class="fa fa-bookmark-o"></i>
       </button>
-      <button ion-fab
-      *ngIf="!upvoted"
-      (click)="giveUpvote(fab)">
+      <!-- upvote -->
+      <button ion-fab *ngIf="!upvoted" (click)="giveUpvote(fab)">
         <i class="fa fa-thumbs-o-up"></i>
       </button>
-      <button ion-fab
-      *ngIf="upvoted"
-      (click)="giveUpvote(fab)">
+      <button ion-fab *ngIf="upvoted" (click)="giveUpvote(fab)">
         <i class="fa fa-thumbs-up"></i>
       </button>
-      <button ion-fab
-      (click)="giveReward(fab)">
+      <!-- reward -->
+      <button ion-fab (click)="giveReward(fab)">
         <i class="fa fa-gift"></i>
       </button>
     </ion-fab-list>

@@ -1,9 +1,9 @@
-import { SignupPage } from './../signup/signup';
-import { TabsPage } from './../tabs/tabs';
-import { Component } from '@angular/core';
-import { NavController, ToastController } from 'ionic-angular';
-import { Api } from '../../providers/api';
-import { Storage } from '@ionic/storage';
+import { SignupPage } from "./../signup/signup";
+import { TabsPage } from "./../tabs/tabs";
+import { Component } from "@angular/core";
+import { NavController, ToastController } from "ionic-angular";
+import { Api } from "../../providers/api";
+import { Storage } from "@ionic/storage";
 
 /**
  * Generated class for the LoginPage page.
@@ -13,8 +13,8 @@ import { Storage } from '@ionic/storage';
  */
 
 @Component({
-  selector: 'page-login',
-  templateUrl: 'login.html',
+  selector: "page-login",
+  templateUrl: "login.html"
   // template: `  `
 })
 export class LoginPage {
@@ -25,17 +25,18 @@ export class LoginPage {
     public navCtrl: NavController,
     public toastCtrl: ToastController,
     public api: Api,
-    public storage: Storage) {
-      this.email = 'zachery1028@gmail.com';
-      this.pwd = 'password';
+    public storage: Storage
+  ) {
+    this.email = "3@nus.edu";
+    this.pwd = "password";
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+    console.log("ionViewDidLoad LoginPage");
   }
 
   doLogin() {
-    let endpoint = 'reader/login';
+    let endpoint = "reader/login";
     let body = {
       email: this.email,
       pwd: this.pwd
@@ -48,19 +49,21 @@ export class LoginPage {
         });
       },
       err => {
-        let msg: string = 'Sign in failed! Incorrect email or password.';
-        if (err.status != 401) { // unauthorized
-          msg += ` Status: ${err.status}`
+        let msg: string = "Sign in failed! Incorrect email or password.";
+        if (err.status != 401) {
+          // unauthorized
+          msg += ` Status: ${err.status}`;
         }
 
         let toast = this.toastCtrl.create({
           message: msg,
-          duration: 2000,
-          position: 'top'
-          // cssClass: '{}' // TODO: style alert
+          duration: 3500,
+          position: "top",
+          cssClass: "toast-error"
         });
         toast.present();
-      });
+      }
+    );
   }
 
   goSignup() {

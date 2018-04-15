@@ -19,7 +19,7 @@ import { Storage } from "@ionic/storage";
 export class SignupPage {
   private fName: string = "Zhe";
   private lName: string = "Xiong";
-  private email: string = "zach@live.nus";
+  private email: string = "@nus.edu";
   private pwd: string = "password";
 
   constructor(
@@ -56,7 +56,7 @@ export class SignupPage {
           },
           err => {
             let msg = `Account created but login failed. Status: ${err.status}`;
-            this.showToast(msg);
+            this.showToast(msg, false);
           }
         );
       },
@@ -66,7 +66,7 @@ export class SignupPage {
           // empty request OR email conflict
           msg += `Status: ${err.status}`;
         }
-        this.showToast(msg);
+        this.showToast(msg, false);
       }
     );
   }
@@ -75,11 +75,12 @@ export class SignupPage {
     this.navCtrl.setRoot(LoginPage);
   }
 
-  showToast(msg: string) {
+  showToast(msg: string, success: boolean) {
     let toast = this.toastCtrl.create({
       message: msg,
-      duration: 2000,
-      position: "top"
+      duration: 3500,
+      position: "top",
+      cssClass: success ? "toast-success" : "toast-error"
     });
     toast.present();
   }

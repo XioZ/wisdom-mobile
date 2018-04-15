@@ -1,7 +1,13 @@
 import { Storage } from "@ionic/storage";
 import { Api } from "./../../providers/api";
 import { Component } from "@angular/core";
-import { NavController, ToastController, NavParams } from "ionic-angular";
+import {
+  NavController,
+  ToastController,
+  NavParams,
+  PopoverController
+} from "ionic-angular";
+import { TopicsPopoverPage } from "../topics-popover/topics-popover";
 
 /**
  * Generated class for the DiscoverPage page.
@@ -17,12 +23,14 @@ import { NavController, ToastController, NavParams } from "ionic-angular";
 export class DiscoverPage {
   articles: Array<any>;
   interestedTopics: string[];
+  showTopic: string;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public api: Api,
     public toastCtrl: ToastController,
+    public popoverCtrl: PopoverController,
     public storage: Storage
   ) {
     this.articles = [];
@@ -31,35 +39,58 @@ export class DiscoverPage {
 
   ionViewDidLoad() {
     console.log("ionViewDidLoad DiscoverPage");
+    this.getSavedTopicsAndFetchArticles();
+  }
+
+  getSavedTopicsAndFetchArticles(refresher?) {
     // retrieve user's interested topics
     this.storage.get("user").then(user => {
-      if (user.topics) {
+      if (user && user.topics) {
         // not null, not undefined
         this.interestedTopics = user.topics;
         if (this.interestedTopics.length < 3) {
           this.showToast(
-            "You haven't selected sufficient number of interested topics."
+            "Help us find you the articles you like by adding more interested topics in Me Tab."
           );
-          this.articles = []; // display nothing
+        }
+        if (this.showTopic) {
+          // showTopic alrd set, triggered by refresh
+          // check if the current interested topics contain showTopic
+          if (this.interestedTopics.indexOf(this.showTopic) > -1) {
+            this.getMostLikedArticles(refresher);
+          } else {
+            // this topic not contained in user's current saved interested topics
+            // default to display 1st topic in his saved topics
+            this.showTopic = this.interestedTopics[0];
+            this.getMostLikedArticles(refresher);
+          }
         } else {
-          this.getMostLikedArticles(this.interestedTopics[0]);
+          // first time discover page is loaded
+          // display trending articles of user's 1st interested topic
+          this.showTopic = this.interestedTopics[0];
+          this.getMostLikedArticles(refresher);
         }
       } else {
-        this.interestedTopics = [];
+        // user or his saved topics not found
+        // this.interestedTopics = [];
         this.showToast("Failed to retrieve saved topics from Storage.");
       }
     });
   }
 
-  getMostLikedArticles(topic: string) {
+  // display most upvoted articles based on the showing topic
+  getMostLikedArticles(refresher?) {
+    if (!this.showTopic) return;
     // console.log('inside getmostlikedarticles')
-    let endpoint = `article/mostLiked?topic=${topic}`;
+    let endpoint = `article/mostLiked?topic=${this.showTopic}`;
     this.api.get(endpoint).subscribe(
       resp => {
         // console.log(resp)
+        if (refresher) refresher.complete();
         this.articles = resp;
       },
       err => {
+        if (refresher) refresher.complete();
         let msg: string =
           "Oops! Failed to retrieve trending articles. Please try again.";
         if (err.status) {
@@ -70,10 +101,23 @@ export class DiscoverPage {
     );
   }
 
+  showTopicsPopover(event) {
+    let popover = this.popoverCtrl.create(TopicsPopoverPage, {
+      topics: this.interestedTopics
+    });
+    popover.onDidDismiss(data => {
+      if (data && data.topic) {
+        this.showTopic = data.topic;
+        this.getMostLikedArticles();
+      }
+    });
+    popover.present({ ev: event });
+  }
+
   showToast(msg: string) {
     let toast = this.toastCtrl.create({
       message: msg,
-      duration: 2000,
+      duration: 3500,
       position: "top"
     });
     toast.present();

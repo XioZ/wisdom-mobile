@@ -5,15 +5,12 @@
 // roboto, and noto sans fonts
 $font-path: "../assets/fonts";
 
-
 // The app direction is used to include
 // rtl styles in your app. For more info, please see:
 // http://ionicframework.com/docs/theming/rtl-support/
 $app-direction: ltr;
 
-
 @import "ionic.globals";
-
 
 // Shared Variables
 // --------------------------------------------------
@@ -21,12 +18,10 @@ $app-direction: ltr;
 // the Sass variables found in Ionic's source scss files.
 // To view all the possible Ionic variables, see:
 // http://ionicframework.com/docs/theming/overriding-ionic-variables/
-$font-family-base: 'Nunito';
-$font-family-ios-base: 'Nunito';
-$font-family-md-base: 'Nunito';
-$font-family-wp-base: 'Nunito';
-
-
+$font-family-base: "Nunito";
+$font-family-ios-base: "Nunito";
+$font-family-md-base: "Nunito";
+$font-family-wp-base: "Nunito";
 
 // Named Color Variables
 // --------------------------------------------------
@@ -37,34 +32,24 @@ $font-family-wp-base: 'Nunito';
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #1D4778,
-  secondary:  #00AA8D, // accent
-  danger:     #E83128,
-  light:      #E0E0E0,
-  dark:       #232A31
+  primary: #1d4778,
+  secondary: #00aa8d,
+  danger: #e83128,
+  light: #e0e0e0,
+  dark: #232a31
 );
-
 
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
 
-
-
-
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
 
-
-
-
 // App Windows Variables
 // --------------------------------------------------
 // Windows only Sass variables can go here
-
-
-
 
 // App Theme
 // --------------------------------------------------
@@ -75,7 +60,6 @@ $colors: (
 
 @import "ionic.theme.default";
 
-
 // Ionicons
 // --------------------------------------------------
 // The premium icon font for Ionic. For more info, please see:
@@ -83,9 +67,21 @@ $colors: (
 
 @import "ionic.ionicons";
 
-
 // Fonts
 // --------------------------------------------------
 
 @import "roboto";
 @import "noto-sans";
+
+// Global Custom Styles
+.toast-success {
+  > div {
+    background-color: green !important;
+  }
+}
+
+.toast-error {
+  > div {
+    background-color: red !important;
+  }
+}

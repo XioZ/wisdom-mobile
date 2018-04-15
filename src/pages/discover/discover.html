@@ -7,24 +7,37 @@
 <ion-header>
   <ion-navbar>
     <ion-title>WISDOM</ion-title>
-    <!-- TODO: menu for topic selection -->
+    <ion-buttons end>
+      <button ion-button color="primary" clear (click)="showTopicsPopover($event)">
+        Topics
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-list 
-  approxItemHeight="120px"
-  approxItemWidth="100%"
-  [virtualScroll]="articles"
-  [virtualTrackBy]="trackByArticleId">
+  <!-- refresher needs to be the first child of content -->
+  <ion-refresher (ionRefresh)="getSavedTopicsAndFetchArticles($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Fetching newest articles...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-list-header>
+    {{ showTopic }}
+  </ion-list-header>
+  <ion-list approxItemHeight="120px" approxItemWidth="100%" [virtualScroll]="articles" [virtualTrackBy]="trackByArticleId">
     <div *virtualItem="let article" style="width: 100%;">
       <page-article-card [article]="article">
       </page-article-card>
     </div>
   </ion-list>
-  <p class="text-center" ion-text color="dark"
-  *ngIf="savedTopics?.length == 0" padding-horizontal>
-    You have not selected any interested topics.<br>
-    You can do so in the Account Tab<br>to start discovering.
-  </p>
+  <div class="text-center" style="margin-top: -20px; margin-bottom: 16px;" *ngIf="articles?.length">
+    .
+    <br> .
+    <br> .
+    <br>
+    <br> Congrats! You've found the end to everything...
+  </div>
+  <div class="text-center mx-5" ion-text color="dark" style="margin-top: 50%;" *ngIf="articles?.length == 0" padding-horizontal>
+    Trending articles matching your interested topics will appear here. You can change the topics you like in Me Tab.
+  </div>
 </ion-content>

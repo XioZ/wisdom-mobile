@@ -5,7 +5,7 @@
   Ionic pages and navigation.
 -->
 <!-- A REUSABLE COMPONENT -->
-<div class="article-card" padding (click)="viewArticle()" >
+<div class="article-card" padding (click)="viewArticle()">
   <div class="row no-gutters align-items-center">
     <div class="col-2">
       <!-- TODO: change image url to dynamic path -->
@@ -17,7 +17,8 @@
         {{ article.author.name }}
       </h5>
       <h6 ion-text color="dark" class="mb-0">
-        {{ article.created | timeAgo }} &middot; {{ article.numOfUpvotes }} upvotes &middot; {{ article.topic }}</h6>
+        {{ article.created | timeAgo }} &middot; {{ (article.content?.length / 1200).toFixed(0) }} mins read &middot; {{ article.topic
+        }}</h6>
     </div>
   </div>
   <div>

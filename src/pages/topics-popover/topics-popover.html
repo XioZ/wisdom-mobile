@@ -1,0 +1,13 @@
+<!--
+  Generated template for the TopicsPopoverPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<div>
+  <ion-list>
+    <button ion-item *ngFor="let topic of topics" (click)="topicSelected(topic)">
+      {{ topic }}
+    </button>
+  </ion-list>
+</div>
