@@ -34,6 +34,10 @@ export class SignupPage {
   }
 
   doSignup() {
+    if (!this.fName || !this.lName || !this.email || !this.pwd) {
+      this.showToast("Please fill in all fields!", false);
+      return;
+    }
     let endpoint = "reader";
     let body = {
       name: this.fName + " " + this.lName,

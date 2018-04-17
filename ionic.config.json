@@ -4,5 +4,12 @@
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}
-  }
+  },
+  "proxies": [
+    {
+      "path": "/api/",
+      "proxyUrl":
+        "http://is3106-gp12.southeastasia.cloudapp.azure.com:8080/Wisdom-war/api/"
+    }
+  ]
 }
