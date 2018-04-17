@@ -27,7 +27,7 @@ export class LoginPage {
     public api: Api,
     public storage: Storage
   ) {
-    this.email = "3@nus.edu";
+    this.email = "super@gmail.com";
     this.pwd = "password";
   }
 
