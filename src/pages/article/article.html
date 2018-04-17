@@ -17,7 +17,8 @@
       <div class="media">
         <!-- TODO: click on author avatar to go to author profile page -->
         <!-- TODO: change author avatar img url to dynamic path -->
-        <img class="mr-3" src="http://cinemovie.tv/images/stories/Movie%20Pics/Ansel-Elgort-Baby-Driver-interview.jpg" alt="Author Avator">
+        <img class="mr-3" [src]="'http://is3106-gp12.southeastasia.cloudapp.azure.com:8080/author_' + article.author.picPath + '.png'"
+          alt="Author Avator">
         <div class="media-body mt-1 mr-3">
           <h5 class="mb-0 font-weight-bold" ion-text color="dark">
             {{ author?.name }}
@@ -52,7 +53,7 @@
     <h4 ion-text class="my-2">
       {{ article.description }}
     </h4>
-    <img class="img-fluid my-3" src="https://images.unsplash.com/photo-1465915147858-4a9762d4ff68?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5dd96b113b2b58309989e3820d046095&auto=format&fit=crop&w=750&q=80"
+    <img class="img-fluid my-3" [src]="'http://is3106-gp12.southeastasia.cloudapp.azure.com:8080/author_' + article.author.id + '_' + article.picPath + '.png'"
       alt="Article Picture">
     <!-- <p style="white-space: pre;"> -->
     <p class="my-2" [innerHTML]="article.content">
