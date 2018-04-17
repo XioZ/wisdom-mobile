@@ -77,7 +77,7 @@ export class ArticlePage {
         let msg: string = `Failed to retrieve the complete article. Status: ${
           err.status
         }`;
-        this.showToast(msg);
+        this.showToast(msg, false);
       }
     );
   }
@@ -103,12 +103,13 @@ export class ArticlePage {
         this.storage.set("user", resp).then(() => {
           this.savedByUser = true;
         });
+        this.showToast("Saved!", true);
       },
       err => {
         let msg: string = `Failed to save the article. Please try again. Status: ${
           err.status
         }`;
-        this.showToast(msg);
+        this.showToast(msg, false);
       }
     );
   }
@@ -121,10 +122,11 @@ export class ArticlePage {
         this.storage.set("user", resp).then(() => {
           this.savedByUser = false;
         });
+        this.showToast("Unsaved!", true);
       },
       err => {
         let msg: string = `Action failed. Status: ${err.status}`;
-        this.showToast(msg);
+        this.showToast(msg, false);
       }
     );
   }
@@ -137,10 +139,11 @@ export class ArticlePage {
         // to update article's upvote number
         this.article = resp;
         this.upvoted = true;
+        this.showToast("Upvoted!", true);
       },
       err => {
         let msg: string = `Action failed. Status: ${err.status}`;
-        this.showToast(msg);
+        this.showToast(msg, false);
       }
     );
   }
@@ -153,7 +156,7 @@ export class ArticlePage {
       },
       err => {
         let msg: string = `Action failed. Status: ${err.status}`;
-        this.showToast(msg);
+        this.showToast(msg, false);
       }
     );
   }
@@ -171,7 +174,7 @@ export class ArticlePage {
       },
       err => {
         let msg: string = `Action failed. Status: ${err.status}`;
-        this.showToast(msg);
+        this.showToast(msg, false);
       }
     );
   }
@@ -184,7 +187,7 @@ export class ArticlePage {
       },
       err => {
         let msg: string = `Action failed. Status: ${err.status}`;
-        this.showToast(msg);
+        this.showToast(msg, false);
       }
     );
   }
@@ -209,11 +212,12 @@ export class ArticlePage {
     modal.present();
   }
 
-  showToast(msg: string) {
+  showToast(msg: string, success: boolean) {
     let toast = this.toastCtrl.create({
       message: msg,
-      duration: 2000,
-      position: "bottom"
+      duration: 3000,
+      position: "bottom",
+      cssClass: success ? "toast-success" : "toast-error"
     });
     toast.present();
   }

@@ -17,10 +17,10 @@ import { Storage } from "@ionic/storage";
   templateUrl: "signup.html"
 })
 export class SignupPage {
-  private fName: string = "Zhe";
-  private lName: string = "Xiong";
-  private email: string = "@nus.edu";
-  private pwd: string = "password";
+  private fName: string = "";
+  private lName: string = "";
+  private email: string = "";
+  private pwd: string = "";
 
   constructor(
     public navCtrl: NavController,
