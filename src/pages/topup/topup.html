@@ -1,0 +1,39 @@
+<!--
+  Generated template for the RewardPopoverPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<div class="px-2 py-3">
+    <h4 class="text-center">Top Up</h4>
+    <hr>
+    <div class="mx-3">How much you want to topup to WISDOM platform</div>
+    <div class="row no-gutters px-3">
+      <div class="col text-center">
+        <button ion-button small color="secondary" [outline]="selectedAmt !== 1" (click)="selectAmount(1)">S$1</button>
+      </div>
+      <div class="col text-center">
+        <button ion-button small color="secondary" [outline]="selectedAmt !== 3" (click)="selectAmount(3)">S$3</button>
+      </div>
+    </div>
+    <div class="row no-gutters px-3">
+      <div class="col text-center">
+        <button ion-button small color="secondary" [outline]="selectedAmt !== 5" (click)="selectAmount(5)">S$5</button>
+      </div>
+      <div class="col text-center">
+        <button ion-button small color="secondary" [outline]="selectedAmt !== 9" (click)="selectAmount(9)">S$9</button>
+      </div>
+    </div>
+    <div class="mx-3">
+      <ion-item>
+        <ion-label stacked>Other amount (S$):</ion-label>
+        <ion-input type="number" [(ngModel)]="enteredAmt" (click)="selectedAmt = 0"></ion-input>
+      </ion-item>
+    </div>
+    <div class="text-center mt-3">
+      <button ion-button small icon-right (click)="topUpWallet()">
+        <span class="pt-1">Yes</span>
+        <ion-icon name="send"></ion-icon>
+      </button>
+    </div>
+  </div>

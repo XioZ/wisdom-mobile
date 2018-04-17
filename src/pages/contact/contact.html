@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Contact
+      Me
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -14,4 +14,39 @@
       @ionicframework
     </ion-item>
   </ion-list>
+      <div class="col-9">
+        <div class="media">
+          <!-- TODO: click on author avatar to go to author profile page -->
+          <!-- TODO: change author avatar img url to dynamic path -->
+          <!-- <img class="mr-3" src="http://cinemovie.tv/images/stories/Movie%20Pics/Ansel-Elgort-Baby-Driver-interview.jpg" alt="Author Avator"> -->
+          <div class="media-body mt-1 mr-3">
+            <h3 class="mb-0 font-weight-bold" ion-text color="dark">
+              {{ user?.name }}
+            </h3>
+            <h5 class="my-1" ion-text color="dark">
+              {{ user?.email }}
+            </h5>
+            <hr class="mx-1">
+            <h4 class="mb-0 font-weight-bold" ion-text color="dark">
+                Remaining balance
+              </h4>
+            <h5 class="my-1" ion-text color="dark">
+               {{ user?.balance }}
+            </h5>
+          </div>
+        </div>
+      </div>
+      <button ion-fab mini (click)="topUp(fab)">
+          <ion-icon name="add"></ion-icon>
+        </button>
+<!-- 
+  <ion-fab bottom right #fab>
+
+      <ion-fab-list side="top">
+        <!-- reward -->
+        <!-- <button ion-fab (click)="giveReward(fab)">
+          <i class="fa fa-gift"></i>
+        </button>
+      </ion-fab-list>
+    </ion-fab> -->
 </ion-content>

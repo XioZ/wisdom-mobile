@@ -1,11 +1,31 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      About
+      Your Questions
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-
+<ion-content>
+  <!-- refresher needs to be the first child of content -->
+  <ion-refresher (ionRefresh)="getQuestionsByReader($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing your question history...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-list approxItemHeight="120px" approxItemWidth="100%" [virtualScroll]="questions" [virtualTrackBy]="trackByQuestionId">
+    <div *virtualItem="let question" style="width: 100%;">
+      <page-question-card [question]="question">
+      </page-question-card>
+    </div>
+  </ion-list>
+  <div class="text-center" style="margin-top: -20px; margin-bottom: 16px;" *ngIf="questions.length">
+    .
+    <br> .
+    <br> . <br>
+    <br> Congrats! You've found the end to everything... 
+  </div>
+  <div class="text-center mx-5" ion-text color="dark" style="margin-top: 50%;" *ngIf="questions.length == 0" padding-horizontal>
+    Articles from your followed authors will appear here. For now, start reading the articles in Discover Tab and follow some
+    authors you like!
+  </div>
 </ion-content>

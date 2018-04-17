@@ -1,0 +1,33 @@
+<!--
+  Generated template for the ArticleCardPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<!-- A REUSABLE COMPONENT -->
+<div class="question-card" padding (click)="viewQuestion()">
+  <div class="row no-gutters align-items-center">
+    <div class="col-2">
+      <!-- TODO: change image url to dynamic path -->
+      <ion-img width="30" height="30" src="http://cinemovie.tv/images/stories/Movie%20Pics/Ansel-Elgort-Baby-Driver-interview.jpg">
+      </ion-img>
+    </div>
+    <div class="col-10">
+      <h5 ion-text color="dark" class="mb-0 font-weight-bold">
+        {{ question.author.name }}
+      </h5>
+      <h6 ion-text color="dark" class="mb-0">
+        $ {{ question.price }} has been paid &middot; {{ question.status
+        }}</h6>
+    </div>
+  </div>
+  <div>
+    <h3 ion-text class="font-weight-bold mb-0">
+      {{ question.title }}
+    </h3>
+    <p ion-text class="mb-0">
+      {{ question.content }}
+    </p>
+    <hr class="mb-0">
+  </div>
+</div>

@@ -24,6 +24,9 @@ import { HttpClientModule } from "@angular/common/http";
 
 import { TimeAgoPipe } from "time-ago-pipe";
 import { TopicsPopoverPage } from "../pages/topics-popover/topics-popover";
+import { QuestionCardPage } from "../pages/question-card/question-card";
+import { QuestionDetailPage } from "../pages/question-detail/question-detail";
+import { TopupPage } from "../pages/topup/topup";
 
 @NgModule({
   declarations: [
@@ -41,7 +44,10 @@ import { TopicsPopoverPage } from "../pages/topics-popover/topics-popover";
     RewardPopoverPage,
     QuestionModalPage,
     TopicsPopoverPage,
-    TimeAgoPipe
+    TimeAgoPipe,
+    QuestionCardPage,
+    QuestionDetailPage,
+    TopupPage,
   ],
   imports: [
     BrowserModule,
@@ -64,7 +70,10 @@ import { TopicsPopoverPage } from "../pages/topics-popover/topics-popover";
     HomePage,
     RewardPopoverPage,
     QuestionModalPage,
-    TopicsPopoverPage
+    TopicsPopoverPage,
+    QuestionCardPage,
+    QuestionDetailPage,
+    TopupPage,
   ],
   providers: [
     Api,

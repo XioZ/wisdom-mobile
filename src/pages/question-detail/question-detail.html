@@ -1,0 +1,57 @@
+<!--
+  Generated template for the QuestionModalPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-buttons start>
+      <!-- <button ion-button color="primary" clear (click)="viewCtrl.dismiss()">
+        Close
+      </button> -->
+    </ion-buttons>
+    <ion-title>
+      Question Detail
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="author-display">
+    <div class="text-center">
+      <img class="my-3" src="http://cinemovie.tv/images/stories/Movie%20Pics/Ansel-Elgort-Baby-Driver-interview.jpg" alt="Author Avator">
+      <h3 class="my-2 font-weight-bold" ion-text color="dark">
+        {{ author?.name }}
+      </h3>
+      <h4 class="text-left mx-5 my-2" ion-text color="dark">
+        {{ author?.description }}
+      </h4>
+      <hr class="mx-5">
+      <div class="text-left mx-5 my-2">
+        You have paid 
+        <span ion-text
+          color="primary">
+          S$ {{ author?.qtnPrice }}
+        </span>for this question:
+      </div>
+    </div>
+    <div class="text-center my-5 mx-4">
+     
+      <h3 class="my-2 font-weight-bold" ion-text color="dark">
+        {{ question?.title }}
+      </h3>
+      <h4 class="text-left mx-5 my-2" ion-text color="dark">
+          {{ question?.content }}
+      </h4>
+
+      <hr class="mx-5">
+      <h3 class="my-2 font-weight-bold" ion-text color="dark">
+        Reply
+      </h3>
+      <h4 class="text-left mx-5 my-2" ion-text color="dark">
+          {{ question?.reply }}
+        </h4>
+      </div>
+  </div>
+</ion-content>
