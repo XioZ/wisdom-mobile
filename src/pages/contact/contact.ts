@@ -10,6 +10,7 @@ import {
   FabContainer
  } from "ionic-angular";
 import { Storage } from "@ionic/storage";
+import { SavedArticlesPage } from "../saved-articles/saved-articles";
 
 @Component({
   selector: 'page-contact',
@@ -56,6 +57,9 @@ export class ContactPage {
       this.ionViewDidLoad();
     });
     popover.present({});
+  }
+  viewSavedArticle(){
+    this.navCtrl.push(SavedArticlesPage);
   }
 
   showToast(msg: string) {

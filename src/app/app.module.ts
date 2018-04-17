@@ -27,6 +27,7 @@ import { TopicsPopoverPage } from "../pages/topics-popover/topics-popover";
 import { QuestionCardPage } from "../pages/question-card/question-card";
 import { QuestionDetailPage } from "../pages/question-detail/question-detail";
 import { TopupPage } from "../pages/topup/topup";
+import { SavedArticlesPage } from "../pages/saved-articles/saved-articles";
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { TopupPage } from "../pages/topup/topup";
     QuestionCardPage,
     QuestionDetailPage,
     TopupPage,
+    SavedArticlesPage
   ],
   imports: [
     BrowserModule,
@@ -74,6 +76,7 @@ import { TopupPage } from "../pages/topup/topup";
     QuestionCardPage,
     QuestionDetailPage,
     TopupPage,
+    SavedArticlesPage
   ],
   providers: [
     Api,

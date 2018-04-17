@@ -36,22 +36,23 @@
         </span>for this question:
       </div>
     </div>
-    <div class="text-center my-5 mx-4">
-     
-      <h3 class="my-2 font-weight-bold" ion-text color="dark">
-        {{ question?.title }}
-      </h3>
-      <h4 class="text-left mx-5 my-2" ion-text color="dark">
-          {{ question?.content }}
-      </h4>
+    <ion-card>
 
-      <hr class="mx-5">
-      <h3 class="my-2 font-weight-bold" ion-text color="dark">
-        Reply
+        <ion-card-header>
+            {{ question?.title }}
+        </ion-card-header>
+        <ion-card-content>{{ question?.content }}</ion-card-content>
+      
+      </ion-card>
+    <div class="text-center my-5 mx-4">
+      <!-- <hr class="mx-5"> -->
+   <ion-badge item-end>{{ question?.status }}</ion-badge>
+      <h3 class="my-3 font-weight-bold" ion-text color="dark">
+        {{ question?.reply != null? 'You got a reply!' : ''}}
       </h3>
-      <h4 class="text-left mx-5 my-2" ion-text color="dark">
-          {{ question?.reply }}
-        </h4>
+      <ion-card>
+          <ion-card-content>{{ question?.reply }}</ion-card-content>
+        </ion-card>
       </div>
   </div>
 </ion-content>
