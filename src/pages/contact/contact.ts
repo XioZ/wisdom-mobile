@@ -61,6 +61,9 @@ export class ContactPage {
   viewSavedArticle(){
     this.navCtrl.push(SavedArticlesPage);
   }
+  viewAllFollowing(){
+    this.ionViewDidLoad();
+  }
 
   showToast(msg: string) {
     let toast = this.toastCtrl.create({
