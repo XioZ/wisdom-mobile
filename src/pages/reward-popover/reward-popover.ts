@@ -53,6 +53,10 @@ export class RewardPopoverPage {
         this.showToast("Only integer amount is allowed!", false);
         return;
       }
+      if (this.enteredAmt < 1) {
+        this.showToast("Please enter a positive amount!", false);
+        return;
+      }
       body.amount = `${this.enteredAmt}`;
     } else {
       this.showToast("Please indicate an amount!", false);

@@ -20,7 +20,7 @@
 <ion-content padding>
   <div class="author-display">
     <div class="text-center">
-      <img class="my-3" src="http://cinemovie.tv/images/stories/Movie%20Pics/Ansel-Elgort-Baby-Driver-interview.jpg" alt="Author Avator">
+      <img class="my-3" [src]="'http://is3106-gp12.southeastasia.cloudapp.azure.com:8080/author_' + author.picPath + '.png'" alt="Author Avator">
       <h3 class="my-2 font-weight-bold" ion-text color="dark">
         {{ author?.name }}
       </h3>
@@ -29,30 +29,29 @@
       </h4>
       <hr class="mx-5">
       <div class="text-left mx-5 my-2">
-        You have paid 
-        <span ion-text
-          color="primary">
+        You have paid
+        <span ion-text color="primary">
           S$ {{ author?.qtnPrice }}
         </span>for this question:
       </div>
     </div>
     <ion-card>
 
-        <ion-card-header>
-            {{ question?.title }}
-        </ion-card-header>
-        <ion-card-content>{{ question?.content }}</ion-card-content>
-      
-      </ion-card>
+      <ion-card-header>
+        {{ question?.title }}
+      </ion-card-header>
+      <ion-card-content>{{ question?.content }}</ion-card-content>
+
+    </ion-card>
     <div class="text-center my-5 mx-4">
       <!-- <hr class="mx-5"> -->
-   <ion-badge item-end>{{ question?.status }}</ion-badge>
+      <ion-badge item-end>{{ question?.status }}</ion-badge>
       <h3 class="my-3 font-weight-bold" ion-text color="dark">
         {{ question?.reply != null? 'You got a reply!' : ''}}
       </h3>
       <ion-card>
-          <ion-card-content>{{ question?.reply }}</ion-card-content>
-        </ion-card>
-      </div>
+        <ion-card-content>{{ question?.reply }}</ion-card-content>
+      </ion-card>
+    </div>
   </div>
 </ion-content>
