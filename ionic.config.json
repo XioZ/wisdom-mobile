@@ -9,7 +9,7 @@
     {
       "path": "/api/",
       "proxyUrl":
-        "http://is3106-gp12.southeastasia.cloudapp.azure.com:8080/Wisdom-war/api/"
+        "http://localhost:8080/Wisdom-war/api/"
     }
   ]
 }

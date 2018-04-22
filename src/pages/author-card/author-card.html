@@ -1,0 +1,36 @@
+<!--
+  Generated template for the ArticleCardPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<!-- A REUSABLE COMPONENT -->
+<div class="author-card" padding (click)="viewAuthor()">
+  <div class="row no-gutters align-items-center">
+        <div class="col-9">
+          <div class="media">
+            <!-- TODO: click on author avatar to go to author profile page -->
+            <!-- TODO: change author avatar img url to dynamic path -->
+            <ion-img width="30" height="30" *ngIf="author" [src]="'http://is3106-gp12.southeastasia.cloudapp.azure.com:8080/author_' + author.picPath + '.png'"
+              alt="Author Avator">
+            </ion-img>
+            <div class="media-body mt-1 mr-3">
+              <h5 class="mb-0 font-weight-bold" ion-text color="dark">
+                {{ author?.name }}
+              </h5>
+              <h6 class="my-1" ion-text color="dark">
+                {{ author?.description }}
+              </h6>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="col-3">
+            <button class="mt-0" ion-button block small [outline]="!isFollowing" (click)="toggleFollowStatus()">
+              {{ isFollowing ? 'Following' : 'Follow' }}
+            </button>
+            <button ion-button block small outline icon-right (click)="askQuestion()">
+              <span class="pt-1">Ask</span>
+              <ion-icon name="create"></ion-icon>
+            </button>
+          </div> -->
+  </div>

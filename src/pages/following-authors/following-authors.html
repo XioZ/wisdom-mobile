@@ -1,0 +1,39 @@
+
+<!--
+  Generated template for the FollowingAuthorsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Following</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+
+<ion-content>
+    <!-- refresher needs to be the first child of content -->
+    <ion-refresher (ionRefresh)="getAuthors($event)">
+      <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing your author list...">
+      </ion-refresher-content>
+    </ion-refresher>
+    <ion-list approxItemHeight="120px" approxItemWidth="100%" [virtualScroll]="authors" [virtualTrackBy]="trackByAuthorId">
+      <div *virtualItem="let author" style="width: 100%;">
+        <page-author-card [author]="author">
+        </page-author-card>
+      </div>
+    </ion-list>
+    <div class="text-center" style="margin-top: -20px; margin-bottom: 16px;" *ngIf="authors.length">
+      .
+      <br> .
+      <br> . <br>
+      <br> Congrats! You've found the end to everything... 
+    </div>
+    <div class="text-center mx-5" ion-text color="dark" style="margin-top: 50%;" *ngIf="authors.length == 0" padding-horizontal>
+      Your followed authors will appear here.
+    </div>
+  </ion-content>

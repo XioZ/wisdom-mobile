@@ -28,6 +28,8 @@ import { QuestionCardPage } from "../pages/question-card/question-card";
 import { QuestionDetailPage } from "../pages/question-detail/question-detail";
 import { TopupPage } from "../pages/topup/topup";
 import { SavedArticlesPage } from "../pages/saved-articles/saved-articles";
+import { FollowingAuthorsPage } from "../pages/following-authors/following-authors";
+import { AuthorCardPage } from "../pages/author-card/author-card";
 
 @NgModule({
   declarations: [
@@ -49,7 +51,9 @@ import { SavedArticlesPage } from "../pages/saved-articles/saved-articles";
     QuestionCardPage,
     QuestionDetailPage,
     TopupPage,
-    SavedArticlesPage
+    SavedArticlesPage,
+    FollowingAuthorsPage,
+    AuthorCardPage
   ],
   imports: [
     BrowserModule,
@@ -76,7 +80,9 @@ import { SavedArticlesPage } from "../pages/saved-articles/saved-articles";
     QuestionCardPage,
     QuestionDetailPage,
     TopupPage,
-    SavedArticlesPage
+    SavedArticlesPage,
+    FollowingAuthorsPage,
+    AuthorCardPage
   ],
   providers: [
     Api,

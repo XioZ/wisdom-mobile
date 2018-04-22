@@ -11,6 +11,7 @@ import {
  } from "ionic-angular";
 import { Storage } from "@ionic/storage";
 import { SavedArticlesPage } from "../saved-articles/saved-articles";
+import { FollowingAuthorsPage } from "../following-authors/following-authors";
 
 @Component({
   selector: 'page-contact',
@@ -62,7 +63,7 @@ export class ContactPage {
     this.navCtrl.push(SavedArticlesPage);
   }
   viewAllFollowing(){
-    this.ionViewDidLoad();
+    this.navCtrl.push(FollowingAuthorsPage);
   }
 
   showToast(msg: string) {
