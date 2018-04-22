@@ -30,6 +30,7 @@ import { TopupPage } from "../pages/topup/topup";
 import { SavedArticlesPage } from "../pages/saved-articles/saved-articles";
 import { FollowingAuthorsPage } from "../pages/following-authors/following-authors";
 import { AuthorCardPage } from "../pages/author-card/author-card";
+import { MePage } from "../pages/me/me";
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { AuthorCardPage } from "../pages/author-card/author-card";
     TopupPage,
     SavedArticlesPage,
     FollowingAuthorsPage,
-    AuthorCardPage
+    AuthorCardPage,
+    MePage
   ],
   imports: [
     BrowserModule,
@@ -82,7 +84,8 @@ import { AuthorCardPage } from "../pages/author-card/author-card";
     TopupPage,
     SavedArticlesPage,
     FollowingAuthorsPage,
-    AuthorCardPage
+    AuthorCardPage,
+    MePage
   ],
   providers: [
     Api,

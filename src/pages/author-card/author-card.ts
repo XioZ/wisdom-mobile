@@ -1,5 +1,12 @@
+import { QuestionModalPage } from "./../question-modal/question-modal";
 import { Component, Input } from '@angular/core';
-import { NavController, NavParams, ToastController } from 'ionic-angular';
+import {
+  NavController,
+  NavParams,
+  ToastController,
+  ModalController
+} from 'ionic-angular';
+import { Storage } from "@ionic/storage";
 import { Api } from "./../../providers/api";
 
 /**
@@ -14,81 +21,92 @@ import { Api } from "./../../providers/api";
   templateUrl: 'author-card.html',
 })
 export class AuthorCardPage {
-  @Input('author') author: {};
+  @Input('author') author: { id: number };
 
-  // user: {
-  //   id: number;
-  // };
+  user: {
+    id: number;
+  };
 
-  // isFollowing: boolean = true;
+  isFollowing: boolean = false;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public storage: Storage,
     public api: Api,
-    public toastCtrl: ToastController
+    public toastCtrl: ToastController,
+    public modalCtrl: ModalController
   ) {
+    this.ionViewDidLoad();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AuthorCardPage');
-     // retrieve user id
-    //  this.storage.get("user").then(user => {
-    //   if (user.id) {
-    //     this.user = user;
-    //   }
-    //   //this.checkFollowStatus();
-    // });
+    this.storage.get("user").then(user => {
+      if (user.id) {
+        this.user = user;
+        console.log('userId' + user.id);
+        // display articles from user's followed authors in chronological order
+        this.checkFollowStatus();
+      }
+    });
   }
-  
-  viewAuthor(){
+
+  viewAuthor() {
 
   }
 
-  // checkFollowStatus() {
-  //   let endpoint = `reader/1/checkFollow/${this.user.id}`;
-  //   this.api.get(endpoint).subscribe(
-  //     resp => {
-  //       this.isFollowing = resp.result;
-  //     },
-  //     err => {
-  //       let msg: string = `Action failed. Status: ${err.status}`;
-  //       this.showToast(msg, false);
-  //     }
-  //   );
-  // }
+  checkFollowStatus() {
+    let endpoint = `reader/${this.author.id}/checkFollow/${this.user.id}`;
+    this.api.get(endpoint).subscribe(
+      resp => {
+        this.isFollowing = resp.result;
+      },
+      err => {
+        let msg: string = `Action failed. Status: ${err.status}`;
+        this.showToast(msg, false);
+      }
+    );
+  }
 
   toggleFollowStatus() {
-    // if (this.isFollowing) this.unfollowAuthor();
-    // else this.followAuthor();
+    if (this.isFollowing) this.unfollowAuthor();
+    else this.followAuthor();
   }
 
-  // followAuthor() {
-  //   let endpoint = `reader/1/follow/${this.user.id}`;
-  //   this.api.put(endpoint).subscribe(
-  //     resp => {
-  //       this.isFollowing = true;
-  //     },
-  //     err => {
-  //       let msg: string = `Action failed. Status: ${err.status}`;
-  //       this.showToast(msg, false);
-  //     }
-  //   );
-  // }
+  followAuthor() {
+    let endpoint = `reader/${this.author.id}/follow/${this.user.id}`;
+    this.api.put(endpoint).subscribe(
+      resp => {
+        this.isFollowing = true;
+      },
+      err => {
+        let msg: string = `Action failed. Status: ${err.status}`;
+        this.showToast(msg, false);
+      }
+    );
+  }
 
-  // unfollowAuthor() {
-  //   let endpoint = `reader/1/unfollow/${this.user.id}`;
-  //   this.api.put(endpoint).subscribe(
-  //     resp => {
-  //       this.isFollowing = false;
-  //     },
-  //     err => {
-  //       let msg: string = `Action failed. Status: ${err.status}`;
-  //       this.showToast(msg, false);
-  //     }
-  //   );
-  // }
+  unfollowAuthor() {
+    let endpoint = `reader/${this.author.id}/unfollow/${this.user.id}`;
+    this.api.put(endpoint).subscribe(
+      resp => {
+        this.isFollowing = false;
+      },
+      err => {
+        let msg: string = `Action failed. Status: ${err.status}`;
+        this.showToast(msg, false);
+      }
+    );
+  }
+
+  askQuestion() {
+    let modal = this.modalCtrl.create(QuestionModalPage, {
+      author: this.author
+    });
+    console.log(this.author);
+    modal.present();
+  }
 
   showToast(msg: string, success: boolean) {
     let toast = this.toastCtrl.create({

@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Me
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-list-header>
+      <ion-navbar>
+        <ion-icon name="contact" item-start></ion-icon>
+        {{ user?.name }}
+        <ion-badge>{{ user?.email }}</ion-badge>
+      </ion-navbar>
+    </ion-list-header>
+
+  <div class="col-9">
+    <div class="media">
+      <!-- TODO: click on author avatar to go to author profile page -->
+      <!-- TODO: change author avatar img url to dynamic path -->
+      <!-- <img class="mr-3" src="http://cinemovie.tv/images/stories/Movie%20Pics/Ansel-Elgort-Baby-Driver-interview.jpg" alt="Author Avator"> -->
+      <div class="media-body mt-1 mr-3">
+        <!-- <hr class="mx-1"> -->    
+      </div>
+    </div>
+  </div>
+  <div class="text-center my-5 mx-4">
+      <h4 class="mb-0" ion-text color="dark">
+        Your Balance @WISDOM
+      </h4>
+      <h4 class="mb-0 font-weight-bold" ion-text color="dark">
+        $ {{ user?.balance }}
+      </h4>
+      <br>
+    <button ion-button outline (click)="topUp(fab)">Top Up</button>
+    <br>
+    <br>
+    <ion-list>
+      <ion-item>
+        <i class="fa fa-bookmark"></i>
+        <button ion-button clear (click)="viewSavedArticle()"> Saved articles</button>
+        </ion-item>
+        <ion-item>
+            <i class="fa fa-book"></i>
+            <button ion-button clear (click)="viewAllFollowing()"> Following authors</button>
+        </ion-item>
+            <ion-item>
+                <i class="fa fa-compass"></i>
+                <button ion-button clear (click)="contactInfo()"> Contact Us</button>
+            </ion-item>
+    </ion-list>
+
+  </div>
+
+</ion-content>

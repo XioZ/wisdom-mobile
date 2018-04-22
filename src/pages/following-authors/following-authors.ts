@@ -15,7 +15,7 @@ import { Storage } from "@ionic/storage";
   templateUrl: 'following-authors.html',
 })
 export class FollowingAuthorsPage {
-  authors: Array<{}>;
+  authors: Array<{id: number;}>;
   user: {
     id: number;
   };
@@ -34,10 +34,11 @@ export class FollowingAuthorsPage {
     this.storage.get("user").then(user => {
       if (user.id) {
         this.user = user;
+
+    console.log('userId' + user.id);
         // display articles from user's followed authors in chronological order
         this.getAuthors();
       } else {
-        // this.articles = [];
         this.showToast("Failed to retrieve saved topics from Storage.");
       }
     });
@@ -52,7 +53,7 @@ export class FollowingAuthorsPage {
       err => {
         if (refresher) refresher.complete();
         let msg: string =
-          "Oops! Failed to retrieve articles from your followed authors. Please try again.";
+          "Oops! Failed to retrieve authors you are following. Please try again.";
         if (err.status) {
           msg += ` Status: ${err.status}`;
         }
